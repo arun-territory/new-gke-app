@@ -53,7 +53,7 @@ export function PricingSection() {
               price="500"
               recommended={true}
               features={[
-                "Everything in Basic",
+                "Advanced CI/CD pipeline setup",
                 "Advanced Docker & Kubernetes",
                 "Infrastructure as Code",
                 "1-on-1 mentoring sessions"

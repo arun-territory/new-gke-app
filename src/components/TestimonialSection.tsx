@@ -4,12 +4,12 @@ import { Quote } from 'lucide-react';
 const testimonials = [
   {
     quote: "This program transformed my career. I went from a junior developer to a DevOps engineer in just 2 months!",
-    author: "Sarah Johnson",
+    author: "Nandini",
     role: "DevOps Engineer at Tech Corp"
   },
   {
     quote: "The hands-on projects and mentorship were invaluable. I learned more here than in years of self-study.",
-    author: "Michael Chen",
+    author: "Sai Kiran Sajja",
     role: "Cloud Architect at StartupX"
   },
   {
