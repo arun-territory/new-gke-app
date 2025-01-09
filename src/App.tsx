@@ -9,6 +9,7 @@ import { StatsSection } from './components/StatsSection';
 import { TimelineSection } from './components/TimelineSection';
 import { TestimonialSection } from './components/TestimonialSection';
 import { WhyPerfect } from './pages/WhyPerfect';
+import { AnimatedIcons } from './components/AnimatedIcons';
 
 function App() {
   const handleLearnMore = () => {
@@ -54,10 +55,13 @@ function App() {
                 </Button>
               </div>
             </div>
+            {/* Add AnimatedIcons component */}
+            <div className="mt-12 rounded-xl shadow-xl bg-white/50 backdrop-blur-sm p-12">
+              <AnimatedIcons />
+            </div>
           </motion.div>
         </div>
       </motion.div>
-
       <StatsSection />
       <TimelineSection />
       
