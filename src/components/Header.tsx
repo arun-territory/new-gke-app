@@ -1,15 +1,19 @@
-import React from 'react';
-import { Cloud } from 'lucide-react';
+import React, { useState } from 'react';
+import { Cloud, Menu, X } from 'lucide-react';
 import { Button } from './Button';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const handleWhyPerfect = () => {
     window.location.hash = '#why-perfect';
+    setIsMenuOpen(false);
   };
 
   const handleDaavalAI = () => {
-    window.open('https://huggingface.co/spaces/arunponugoti2565/Daval.AI/', '_blank');
+    window.open('https://1d5390f23bd7f68e78.gradio.live/', '_blank');
+    setIsMenuOpen(false);
   };
 
   const letterVariants = {
@@ -26,6 +30,23 @@ export function Header() {
         repeat: Infinity, 
         duration: 3,
         ease: "easeInOut"
+      }
+    }
+  };
+
+  const menuVariants = {
+    closed: {
+      opacity: 0,
+      x: "100%",
+      transition: {
+        duration: 0.2
+      }
+    },
+    open: {
+      opacity: 1,
+      x: "0%",
+      transition: {
+        duration: 0.3
       }
     }
   };
@@ -65,6 +86,8 @@ export function Header() {
               ))}
             </div>
           </motion.div>
+
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-4">
             <motion.div
               whileHover={{ scale: 1.05 }}
@@ -91,8 +114,50 @@ export function Header() {
             <Button variant="outline" size="sm">Internship</Button>
             <Button variant="outline" size="sm">Sign In</Button>
           </nav>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial="closed"
+            animate="open"
+            exit="closed"
+            variants={menuVariants}
+            className="fixed inset-y-0 right-0 w-full bg-white md:hidden"
+          >
+            <div className="pt-20 px-4 space-y-4">
+              <Button 
+                onClick={handleDaavalAI}
+                className="w-full bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white font-semibold"
+              >
+                Daaval AI
+              </Button>
+              <Button 
+                onClick={handleWhyPerfect}
+                className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold"
+              >
+                Why It's Perfect
+              </Button>
+              <Button variant="outline" className="w-full">
+                Internship
+              </Button>
+              <Button variant="outline" className="w-full">
+                Sign In
+              </Button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
