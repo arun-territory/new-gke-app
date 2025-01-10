@@ -12,7 +12,7 @@ export function Header() {
   };
 
   const handleDaavalAI = () => {
-    window.open('https://1d5390f23bd7f68e78.gradio.live/', '_blank');
+    window.open('https://huggingface.co/spaces/arunponugoti2565/Daval.AI', '_blank');
     setIsMenuOpen(false);
   };
 
