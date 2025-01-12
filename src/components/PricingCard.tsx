@@ -8,9 +8,26 @@ interface PricingCardProps {
   price: string;
   features: string[];
   recommended?: boolean;
+  buttonUrl?: string;
+  buttonAction?: () => void;
 }
 
-export function PricingCard({ title, price, features, recommended }: PricingCardProps) {
+export function PricingCard({ 
+  title, 
+  price, 
+  features, 
+  recommended,
+  buttonUrl,
+  buttonAction 
+}: PricingCardProps) {
+  const handleClick = () => {
+    if (buttonAction) {
+      buttonAction();
+    } else if (buttonUrl) {
+      window.open(buttonUrl, '_blank');
+    }
+  };
+
   return (
     <motion.div
       whileHover={{ y: -5 }}
@@ -35,6 +52,7 @@ export function PricingCard({ title, price, features, recommended }: PricingCard
       <Button
         variant={recommended ? "default" : "outline"}
         className="w-full"
+        onClick={handleClick}
       >
         Get Started
       </Button>

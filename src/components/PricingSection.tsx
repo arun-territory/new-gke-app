@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { PricingCard } from './PricingCard';
+import { useNavigate } from 'react-router-dom';
 
 const container = {
   hidden: { opacity: 0 },
@@ -17,6 +18,8 @@ const item = {
 };
 
 export function PricingSection() {
+  const navigate = useNavigate();
+
   return (
     <section className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -39,6 +42,7 @@ export function PricingSection() {
             <PricingCard
               title="Basic"
               price="299"
+              buttonAction={() => navigate('/devops-roadmap')}
               features={[
                 "Complete infrastructure as code implementation",
                 "Production-grade CI/CD pipeline setup",
@@ -52,6 +56,7 @@ export function PricingSection() {
               title="Intermediate"
               price="500"
               recommended={true}
+              buttonUrl="https://gkecloud.com/"
               features={[
                 "Advanced CI/CD pipeline setup",
                 "Advanced Docker & Kubernetes",

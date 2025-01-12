@@ -108,7 +108,7 @@ export function Header() {
                 onClick={handleWhyPerfect}
                 className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold"
               >
-                Why It's Perfect
+                Why you should choose us
               </Button>
             </motion.div>
             <Button variant="outline" size="sm">Internship</Button>

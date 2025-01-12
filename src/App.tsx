@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Container, Layers, GitBranch, Terminal, Database, Cloud } from 'lucide-react';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import { Button } from './components/Button';
 import { Card } from './components/Card';
 import { Header } from './components/Header';
@@ -9,17 +10,16 @@ import { StatsSection } from './components/StatsSection';
 import { TimelineSection } from './components/TimelineSection';
 import { TestimonialSection } from './components/TestimonialSection';
 import { WhyPerfect } from './pages/WhyPerfect';
-import { AnimatedIcons } from './components/AnimatedIcons';
+import DevOpsRoadmap from './components/DevOpsRoadmap';
 
-function App() {
+// Separate HomePage component to handle the main landing page content
+const HomePage = () => {
   const handleLearnMore = () => {
     window.open('https://www.youtube.com/watch?v=pQ87vVMZK-A', '_blank');
   };
 
   return (
-    <div className="min-h-screen">
-      <Header />
-      
+    <>
       {/* Hero Section */}
       <motion.div 
         initial={{ opacity: 0 }} 
@@ -55,13 +55,10 @@ function App() {
                 </Button>
               </div>
             </div>
-            {/* Add AnimatedIcons component */}
-            <div className="mt-12 rounded-xl shadow-xl bg-white/50 backdrop-blur-sm p-12">
-              <AnimatedIcons />
-            </div>
           </motion.div>
         </div>
       </motion.div>
+
       <StatsSection />
       <TimelineSection />
       
@@ -110,7 +107,22 @@ function App() {
       <div id="why-perfect">
         <WhyPerfect />
       </div>
-    </div>
+    </>
+  );
+};
+
+// Main App component with routing
+function App() {
+  return (
+    <Router>
+      <div className="min-h-screen">
+        <Header />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/devops-roadmap" element={<DevOpsRoadmap />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

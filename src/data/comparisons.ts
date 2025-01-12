@@ -8,7 +8,7 @@ export const comparisons = [
     ours: "You will work on one complete project from start to finish, so you clearly see how all parts fit and work together."
   },
   {
-    other: "You might only learn "how to do" something without deeper explanations.",
+    other: "You might only learn how to do something without deeper explanations.",
     ours: "We focus on why it's important, what it is, and how to do it, using clear examples and real-life case studies."
   },
   {
