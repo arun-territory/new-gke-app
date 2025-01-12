@@ -1,3 +1,4 @@
+// PricingSection.tsx
 import { motion } from 'framer-motion';
 import { PricingCard } from './PricingCard';
 import { useNavigate } from 'react-router-dom';
@@ -42,7 +43,9 @@ export function PricingSection() {
             <PricingCard
               title="Basic"
               price="299"
+              buttonText="Syllabus"
               buttonAction={() => navigate('/devops-roadmap')}
+              enrollUrl="https://www.arunponugoti.com/"
               features={[
                 "Complete infrastructure as code implementation",
                 "Production-grade CI/CD pipeline setup",

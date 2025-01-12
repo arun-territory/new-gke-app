@@ -10,7 +10,7 @@ import { StatsSection } from './components/StatsSection';
 import { TimelineSection } from './components/TimelineSection';
 import { TestimonialSection } from './components/TestimonialSection';
 import { WhyPerfect } from './pages/WhyPerfect';
-import DevOpsRoadmap from './components/DevOpsRoadmap';
+import { DevOpsRoadmap } from './components/DevOpsRoadmap';
 
 // Separate HomePage component to handle the main landing page content
 const HomePage = () => {

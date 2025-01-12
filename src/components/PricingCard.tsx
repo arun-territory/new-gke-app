@@ -1,3 +1,4 @@
+// PricingCard.tsx
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
 import { Button } from './Button';
@@ -9,7 +10,9 @@ interface PricingCardProps {
   features: string[];
   recommended?: boolean;
   buttonUrl?: string;
+  buttonText?: string;
   buttonAction?: () => void;
+  enrollUrl?: string;
 }
 
 export function PricingCard({ 
@@ -18,13 +21,21 @@ export function PricingCard({
   features, 
   recommended,
   buttonUrl,
-  buttonAction 
+  buttonText = "Get Started",
+  buttonAction,
+  enrollUrl
 }: PricingCardProps) {
   const handleClick = () => {
     if (buttonAction) {
       buttonAction();
     } else if (buttonUrl) {
       window.open(buttonUrl, '_blank');
+    }
+  };
+
+  const handleEnroll = () => {
+    if (enrollUrl) {
+      window.open(enrollUrl, '_blank');
     }
   };
 
@@ -49,13 +60,24 @@ export function PricingCard({
           </li>
         ))}
       </ul>
-      <Button
-        variant={recommended ? "default" : "outline"}
-        className="w-full"
-        onClick={handleClick}
-      >
-        Get Started
-      </Button>
+      <div className="space-y-3">
+        <Button
+          variant={recommended ? "default" : "outline"}
+          className="w-full"
+          onClick={handleClick}
+        >
+          {buttonText}
+        </Button>
+        {enrollUrl && (
+          <Button
+            variant="default"
+            className="w-full bg-green-600 hover:bg-green-700"
+            onClick={handleEnroll}
+          >
+            Enroll
+          </Button>
+        )}
+      </div>
     </motion.div>
   );
 }
