@@ -1,3 +1,4 @@
+// App.tsx
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Container, Layers, GitBranch, Terminal, Database, Cloud } from 'lucide-react';
@@ -5,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-route
 import { Button } from './components/Button';
 import { Card } from './components/Card';
 import { Header } from './components/Header';
+import { Footer } from './components/Footer';  // Add this import
 import { PricingSection } from './components/PricingSection';
 import { StatsSection } from './components/StatsSection';
 import { TimelineSection } from './components/TimelineSection';
@@ -115,12 +117,15 @@ const HomePage = () => {
 function App() {
   return (
     <Router>
-      <div className="min-h-screen">
+      <div className="min-h-screen flex flex-col">
         <Header />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/devops-roadmap" element={<DevOpsRoadmap />} />
-        </Routes>
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/devops-roadmap" element={<DevOpsRoadmap />} />
+          </Routes>
+        </main>
+        <Footer />  {/* Add Footer component here */}
       </div>
     </Router>
   );
