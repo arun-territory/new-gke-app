@@ -1,1 +1,1 @@
-we are going to learn DevOps 
+we are going to learn DevOps new things adding

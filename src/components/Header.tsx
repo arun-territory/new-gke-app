@@ -2,20 +2,52 @@ import React, { useState } from 'react';
 import { Cloud, Menu, X } from 'lucide-react';
 import { Button } from './Button';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
+
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
-  const handleWhyPerfect = () => {
-    window.location.hash = '#why-perfect';
+  const handleHome = () => {
+    navigate('/');
     setIsMenuOpen(false);
   };
+
 
   const handleDaavalAI = () => {
     window.open('https://huggingface.co/spaces/arunponugoti2565/Daval.AI', '_blank');
     setIsMenuOpen(false);
   };
 
+  const handleInternship = () => {
+    navigate('/internship-file');
+    const pricingSection = document.querySelector('internship-file');
+    if (pricingSection) {
+      const headerOffset = 80;
+      const elementPosition = pricingSection.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+    setIsMenuOpen(false);
+  };
+
+  const handleWhatIsDevOps = () => {
+    navigate('/what-is-devops');
+    setIsMenuOpen(false);
+  };
+
+  const handleWhyIsDevOps = () => {
+    navigate('/why-is-devops');
+    setIsMenuOpen(false);
+  };
+
+
+  // Animation variants
   const letterVariants = {
     initial: { y: 0 },
     animate: { y: [-2, 2, -2], transition: { repeat: Infinity, duration: 2 } }
@@ -58,6 +90,7 @@ export function Header() {
           <motion.div 
             className="flex items-center space-x-2 group cursor-pointer"
             whileHover={{ scale: 1.05 }}
+            onClick={handleHome}
           >
             <motion.div
               variants={cloudVariants}
@@ -89,39 +122,69 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-4">
+            <div className="flex space-x-2">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button 
+                  onClick={handleWhatIsDevOps}
+                  className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white"
+                  size="default"
+                >
+                  What is DevOps?
+                </Button>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button 
+                  onClick={handleWhyIsDevOps}
+                  className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white"
+                  size="default"
+                >
+                  Why choose us?
+                </Button>
+              </motion.div>
+            </div>
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               <Button 
                 onClick={handleDaavalAI}
-                className="bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white font-semibold"
+                className="bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white"
+                size="default"
               >
                 Daaval AI
               </Button>
             </motion.div>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+            
+            <Button 
+              variant="outline" 
+              size="sm" 
+              onClick={handleInternship}
             >
-              <Button 
-                onClick={handleWhyPerfect}
-                className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold"
-              >
-                Why you should choose us
-              </Button>
-            </motion.div>
-            <Button variant="outline" size="sm">Internship</Button>
-            <Button variant="outline" size="sm">Sign In</Button>
+              Internship
+            </Button>
+            <Button 
+              variant="outline" 
+              size="sm"
+            >
+              Sign In
+            </Button>
           </nav>
 
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+          <Button
+            variant="outline"
+            size="icon"
+            className="md:hidden"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </Button>
         </div>
       </div>
 
@@ -137,21 +200,40 @@ export function Header() {
           >
             <div className="pt-20 px-4 space-y-4">
               <Button 
+                onClick={handleWhatIsDevOps}
+                className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white"
+                size="lg"
+              >
+                What is DevOps?
+              </Button>
+              <Button 
+                onClick={handleWhyIsDevOps}
+                className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white"
+                size="lg"
+              >
+                Why DevOps?
+              </Button>
+              <Button 
                 onClick={handleDaavalAI}
-                className="w-full bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white font-semibold"
+                className="w-full bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white"
+                size="lg"
               >
                 Daaval AI
               </Button>
+              
               <Button 
-                onClick={handleWhyPerfect}
-                className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold"
+                variant="outline" 
+                className="w-full" 
+                onClick={handleInternship}
+                size="lg"
               >
-                Why It's Perfect
-              </Button>
-              <Button variant="outline" className="w-full">
                 Internship
               </Button>
-              <Button variant="outline" className="w-full">
+              <Button 
+                variant="outline" 
+                className="w-full"
+                size="lg"
+              >
                 Sign In
               </Button>
             </div>

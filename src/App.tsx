@@ -12,7 +12,11 @@ import { StatsSection } from './components/StatsSection';
 import { TimelineSection } from './components/TimelineSection';
 import { TestimonialSection } from './components/TestimonialSection';
 import { WhyPerfect } from './pages/WhyPerfect';
+import DevOpsGuidePage from './pages/DevOpsGuidePage';
+import { ComparisonTable } from './pages/ComparisonTable';
+
 import { DevOpsRoadmap } from './components/DevOpsRoadmap';
+
 
 // Separate HomePage component to handle the main landing page content
 const HomePage = () => {
@@ -123,6 +127,9 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/devops-roadmap" element={<DevOpsRoadmap />} />
+            <Route path="/what-is-devops" element={<DevOpsGuidePage />} /> {/* Add this route */}
+            <Route path="/why-is-devops" element={<ComparisonTable />} /> {/* Add this route */}
+            <Route path="/internship-file" element={<PricingSection />} /> {/* Add this route */}
           </Routes>
         </main>
         <Footer />  {/* Add Footer component here */}
