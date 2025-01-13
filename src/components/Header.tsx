@@ -4,7 +4,6 @@ import { Button } from './Button';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 
-
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
@@ -13,7 +12,6 @@ export function Header() {
     navigate('/');
     setIsMenuOpen(false);
   };
-
 
   const handleDaavalAI = () => {
     window.open('https://huggingface.co/spaces/arunponugoti2565/Daval.AI', '_blank');
@@ -46,8 +44,12 @@ export function Header() {
     setIsMenuOpen(false);
   };
 
+  const handleBlog = () => {
+    navigate('/blog');
+    setIsMenuOpen(false);
+  };
 
-  // Animation variants
+  // Animation variants remain the same
   const letterVariants = {
     initial: { y: 0 },
     animate: { y: [-2, 2, -2], transition: { repeat: Infinity, duration: 2 } }
@@ -87,6 +89,7 @@ export function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
+          {/* Logo section remains the same */}
           <motion.div 
             className="flex items-center space-x-2 group cursor-pointer"
             whileHover={{ scale: 1.05 }}
@@ -161,6 +164,20 @@ export function Header() {
               </Button>
             </motion.div>
             
+            {/* Add Blog Button */}
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Button 
+                onClick={handleBlog}
+                className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white"
+                size="default"
+              >
+                Blog
+              </Button>
+            </motion.div>
+            
             <Button 
               variant="outline" 
               size="sm" 
@@ -206,6 +223,7 @@ export function Header() {
               >
                 What is DevOps?
               </Button>
+              
               <Button 
                 onClick={handleWhyIsDevOps}
                 className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white"
@@ -219,6 +237,15 @@ export function Header() {
                 size="lg"
               >
                 Daaval AI
+              </Button>
+
+              {/* Add Blog Button to mobile menu */}
+              <Button 
+                onClick={handleBlog}
+                className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white"
+                size="lg"
+              >
+                Blog
               </Button>
               
               <Button 

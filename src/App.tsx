@@ -1,4 +1,3 @@
-// App.tsx
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Container, Layers, GitBranch, Terminal, Database, Cloud } from 'lucide-react';
@@ -6,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-route
 import { Button } from './components/Button';
 import { Card } from './components/Card';
 import { Header } from './components/Header';
-import { Footer } from './components/Footer';  // Add this import
+import { Footer } from './components/Footer';
 import { PricingSection } from './components/PricingSection';
 import { StatsSection } from './components/StatsSection';
 import { TimelineSection } from './components/TimelineSection';
@@ -14,9 +13,8 @@ import { TestimonialSection } from './components/TestimonialSection';
 import { WhyPerfect } from './pages/WhyPerfect';
 import DevOpsGuidePage from './pages/DevOpsGuidePage';
 import { ComparisonTable } from './pages/ComparisonTable';
-
 import { DevOpsRoadmap } from './components/DevOpsRoadmap';
-
+import BlogViewer from './pages/BlogViewer'; // Import the new BlogViewer component
 
 // Separate HomePage component to handle the main landing page content
 const HomePage = () => {
@@ -127,12 +125,14 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/devops-roadmap" element={<DevOpsRoadmap />} />
-            <Route path="/what-is-devops" element={<DevOpsGuidePage />} /> {/* Add this route */}
-            <Route path="/why-is-devops" element={<ComparisonTable />} /> {/* Add this route */}
-            <Route path="/internship-file" element={<PricingSection />} /> {/* Add this route */}
+            <Route path="/what-is-devops" element={<DevOpsGuidePage />} />
+            <Route path="/why-is-devops" element={<ComparisonTable />} />
+            <Route path="/internship-file" element={<PricingSection />} />
+            {/* Replace the old blog routes with the new BlogViewer */}
+            <Route path="/blog/*" element={<BlogViewer />} />
           </Routes>
         </main>
-        <Footer />  {/* Add Footer component here */}
+        <Footer />
       </div>
     </Router>
   );
