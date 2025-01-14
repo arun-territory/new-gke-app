@@ -40,7 +40,6 @@
 // app.use(express.json({ limit: '10kb' })); // Limit body size for security
 
 // // MongoDB Connection
-// const MONGODB_URI = process.env.MONGODB_URI || "mongodb+srv://arunponugoti2565:yFb6W7mPgFdogvsV@project2565.svvyp.mongodb.net/myDatabase?retryWrites=true&w=majority&appName=project2565";
 
 // mongoose.connect(MONGODB_URI, {
 //   useNewUrlParser: true,
