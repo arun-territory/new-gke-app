@@ -6,13 +6,13 @@
 [[plugins]]
   package = "@netlify/plugin-functions-install-core"
 
-# Redirect API requests to Netlify Functions
+# API redirects
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/:splat"
   status = 200
 
-# Handle client-side routing - MUST be after API redirects
+# Single page application handling
 [[redirects]]
   from = "/*"
   to = "/index.html"
@@ -22,4 +22,7 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    Content-Type = "application/xml"
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    Content-Security-Policy = "frame-ancestors 'none'"
+    X-Content-Type-Options = "nosniff"
