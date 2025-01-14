@@ -1,7 +1,15 @@
 [build]
   functions = "functions"
+  publish = "dist"
+  command = "npm run build"
+
+[[plugins]]
+package = "@netlify/plugin-functions-install-core"
 
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/:splat"
   status = 200
+
+[headers.values]
+  Content-Type = "application/xml"
