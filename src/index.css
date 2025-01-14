@@ -2,8 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Font rendering optimization */
+@layer base {
+  h1 {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Background grid pattern */
 .bg-grid-pattern {
   background-image: linear-gradient(to right, #e5e7eb 1px, transparent 1px),
     linear-gradient(to bottom, #e5e7eb 1px, transparent 1px);
   background-size: 24px 24px;
+}
+
+/* Gradient text enhancement */
+.gradient-text {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
