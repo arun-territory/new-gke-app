@@ -8,7 +8,7 @@ import { Button } from './components/Button';
 import { Card } from './components/Card';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
-import { PricingSection } from './components/PricingSection';
+import  PricingSection  from './components/PricingSection';
 import { StatsSection } from './components/StatsSection';
 import { TimelineSection } from './components/TimelineSection';
 import { TestimonialSection } from './components/TestimonialSection';
@@ -18,6 +18,8 @@ import { ComparisonTable } from './pages/ComparisonTable';
 import { DevOpsRoadmap } from './components/DevOpsRoadmap';
 import BlogViewer from './pages/BlogViewer';
 import ApplicationDialog from './components/ApplicationDialog';
+import DevOpsSyllabus from './components/DevOpsSyllabus';
+
 
 // Animation variants
 const containerVariants = {
@@ -226,6 +228,10 @@ function App() {
           <Route path="/internship-file" element={<PricingSection />} />
           <Route path="/blog/*" element={<BlogViewer />} />
           <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="/pricing" element={<PricingSection />} />
+          <Route path="/syllabus" element={<DevOpsSyllabus />} />
+          
+          
         </Routes>
       </Layout>
     </BrowserRouter>
