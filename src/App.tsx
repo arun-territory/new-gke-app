@@ -17,6 +17,7 @@ import DevOpsGuidePage from './pages/DevOpsGuidePage';
 import { ComparisonTable } from './pages/ComparisonTable';
 import { DevOpsRoadmap } from './components/DevOpsRoadmap';
 import BlogViewer from './pages/BlogViewer';
+import ApplicationDialog from './components/ApplicationDialog';
 
 // Animation variants
 const containerVariants = {
@@ -110,9 +111,7 @@ const HomePage = () => {
               transition={{ delay: 0.4 }}
             >
               <div className="rounded-md shadow">
-                <Button size="lg" className="w-full sm:w-auto">
-                  Apply Now
-                </Button>
+                <ApplicationDialog />
               </div>
               <div className="mt-3 sm:mt-0 sm:ml-3">
                 <Button 
@@ -212,7 +211,7 @@ function App() {
           <Route path="/why-is-devops" element={<ComparisonTable />} />
           <Route path="/internship-file" element={<PricingSection />} />
           <Route path="/blog/*" element={<BlogViewer />} />
-          {/* Catch-all route */}
+          {/* Removed /apply route since we're using dialog */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Layout>
