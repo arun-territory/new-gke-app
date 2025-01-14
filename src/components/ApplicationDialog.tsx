@@ -41,7 +41,12 @@ const ApplicationDialog = () => {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:5000/api/applications', {
+      // Use the current window location to determine the API URL
+      const apiBaseUrl = window.location.hostname === 'localhost' 
+        ? 'http://localhost:5000'
+        : 'https://api.gkecloud.com'; // Replace with your actual production API domain
+      
+      const response = await fetch(`${apiBaseUrl}/api/applications`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
