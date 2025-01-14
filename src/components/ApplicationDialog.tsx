@@ -41,12 +41,8 @@ const ApplicationDialog = () => {
     setError('');
 
     try {
-      // Use the current window location to determine the API URL
-      const apiBaseUrl = window.location.hostname === 'localhost' 
-        ? 'http://localhost:5000'
-        : 'https://api.gkecloud.com'; // Replace with your actual production API domain
-      
-      const response = await fetch(`${apiBaseUrl}/api/applications`, {
+      // Use Netlify Function endpoint
+      const response = await fetch('/.netlify/functions/submit-application', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -54,8 +50,10 @@ const ApplicationDialog = () => {
         body: JSON.stringify(formData)
       });
 
+      const data = await response.json();
+
       if (!response.ok) {
-        throw new Error('Failed to submit application');
+        throw new Error(data.error || 'Failed to submit application');
       }
 
       setSuccess(true);
@@ -73,7 +71,7 @@ const ApplicationDialog = () => {
       }, 2000);
 
     } catch (err) {
-      setError('Failed to submit application. Please try again.');
+      setError(err instanceof Error ? err.message : 'Failed to submit application. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -152,8 +150,9 @@ const ApplicationDialog = () => {
                 required
                 value={formData.phone}
                 onChange={handleChange}
+                pattern="[0-9]{10}"
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder="Enter your phone number"
+                placeholder="Enter your 10-digit phone number"
               />
             </div>
 
