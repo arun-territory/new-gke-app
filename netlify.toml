@@ -4,12 +4,22 @@
   command = "npm run build"
 
 [[plugins]]
-package = "@netlify/plugin-functions-install-core"
+  package = "@netlify/plugin-functions-install-core"
 
+# Redirect API requests to Netlify Functions
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/:splat"
   status = 200
 
-[headers.values]
-  Content-Type = "application/xml"
+# Handle client-side routing - MUST be after API redirects
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Headers configuration
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Type = "application/xml"
