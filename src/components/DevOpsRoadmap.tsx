@@ -26,6 +26,23 @@ import {
               A comprehensive guide to mastering DevOps practices and implementing real-world projects
             </p>
           </div>
+
+          {/* Architecture Diagram Section */}
+        <div className="mb-16">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4 text-center">
+            DevOps Architecture Overview
+          </h2>
+          <div className="bg-white p-6 rounded-lg shadow-lg">
+            <img
+              src="/images/devops-architecture.svg"
+              alt="DevOps Architecture Diagram"
+              className="w-full h-auto max-w-4xl mx-auto"
+            />
+            <p className="text-gray-600 text-center mt-4">
+              Comprehensive overview of our DevOps architecture and workflow
+            </p>
+          </div>
+        </div>
   
           {/* Timeline Line */}
           <div className="relative">

@@ -71,7 +71,7 @@ const JrDevOpsCard: React.FC = () => {
   };
 
   const handleEnroll = () => {
-    window.open('https://www.arunponugoti.com/', '_blank');
+    window.open('https://arunponugoti.graphy.com/courses/DevOps-Experince-Program--build-from-scratch--677a34060aee285edbc9e590', '_blank');
   };
 
   return (
@@ -79,7 +79,7 @@ const JrDevOpsCard: React.FC = () => {
       <h2 className="text-3xl font-bold mb-2">Jr DevOps Engineer</h2>
       <div className="flex items-baseline mb-6">
         <span className="text-4xl font-bold">$299</span>
-        <span className="text-gray-500 ml-2">/month</span>
+        <span className="text-gray-500 ml-2">/3 months</span>
       </div>
       <div className="mb-6">
         {features.map((feature, index) => (
