@@ -1,3 +1,5 @@
+// src/App.tsx
+
 import React, { type ReactNode } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -8,7 +10,7 @@ import { Button } from './components/Button';
 import { Card } from './components/Card';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
-import  PricingSection  from './components/PricingSection';
+import PricingSection from './components/PricingSection';
 import { StatsSection } from './components/StatsSection';
 import { TimelineSection } from './components/TimelineSection';
 import { TestimonialSection } from './components/TestimonialSection';
@@ -16,12 +18,12 @@ import { WhyPerfect } from './pages/WhyPerfect';
 import DevOpsGuidePage from './pages/DevOpsGuidePage';
 import { ComparisonTable } from './pages/ComparisonTable';
 import { DevOpsRoadmap } from './components/DevOpsRoadmap';
+import QuoteSlider from './components/QuoteSlider';
 import BlogViewer from './pages/BlogViewer';
 import ApplicationDialog from './components/ApplicationDialog';
 import DevOpsSyllabus from './components/DevOpsSyllabus';
 
-
-// Animation variants
+// Animation variants remain the same
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -40,7 +42,7 @@ const itemVariants = {
   }
 };
 
-// Features data
+// Features data remains the same
 const features = [
   {
     icon: <Container className="w-6 h-6 text-blue-600" />,
@@ -74,7 +76,7 @@ const features = [
   }
 ];
 
-// Hero Section Component
+// Hero Section Component remains the same
 const HeroSection = () => {
   const handleLearnMore = () => {
     window.open('https://www.youtube.com/watch?v=pQ87vVMZK-A', '_blank');
@@ -95,7 +97,6 @@ const HeroSection = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-center"
         >
-          {/* Modified heading styles */}
           <h1 className="text-[2.75rem] sm:text-[3.5rem] md:text-[4rem] font-extrabold leading-tight tracking-tight">
             <span className="block text-[#0F172A]">DevOps Experience Program</span>
             <span 
@@ -140,11 +141,12 @@ const HeroSection = () => {
   );
 };
 
-// HomePage Component
+// HomePage Component with QuoteSlider added
 const HomePage = () => {
   return (
     <>
       <HeroSection />
+      <QuoteSlider />
       <StatsSection />
       <TimelineSection />
       
@@ -188,7 +190,7 @@ const HomePage = () => {
   );
 };
 
-// Layout Component
+// Layout Component remains the same
 interface LayoutProps {
   children: React.ReactNode;
 }
@@ -205,7 +207,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   );
 };
 
-// ScrollToTop Component
+// ScrollToTop Component remains the same
 const ScrollToTop = () => {
   React.useEffect(() => {
     window.scrollTo(0, 0);
@@ -214,7 +216,7 @@ const ScrollToTop = () => {
   return null;
 };
 
-// Main App Component
+// Main App Component remains the same
 function App() {
   return (
     <BrowserRouter>
@@ -230,8 +232,6 @@ function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
           <Route path="/pricing" element={<PricingSection />} />
           <Route path="/syllabus" element={<DevOpsSyllabus />} />
-          
-          
         </Routes>
       </Layout>
     </BrowserRouter>

@@ -104,7 +104,7 @@ const JrDevOpsCard = () => {
     <div className="bg-white rounded-2xl shadow-lg p-6">
       <h2 className="text-3xl font-bold mb-2">Jr DevOps Engineer</h2>
       <div className="flex items-baseline mb-6">
-        <span className="text-4xl font-bold">₹17999</span>
+        <span className="text-4xl font-bold">₹19,999</span>
         <span className="text-gray-500 ml-2">/3 months</span>
       </div>
       
