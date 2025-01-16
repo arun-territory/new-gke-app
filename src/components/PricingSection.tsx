@@ -44,25 +44,51 @@ const FeatureItem: React.FC<FeatureItemProps> = ({ feature, description }) => {
 };
 
 // Jr DevOps Engineer Card Component
-const JrDevOpsCard: React.FC = () => {
+const JrDevOpsCard = () => {
+  const [expandedPath, setExpandedPath] = useState<number | null>(null);
+
   const navigate = useNavigate();
-  
-  const features = [
+
+  const paths = [
     {
       title: "Students & Fresh Graduates",
-      description: "Whether you're in your final year or recently graduated, start your DevOps journey with real-world skills"
+      description: "Perfect starting point for academic talents entering the DevOps field",
+      practices: [
+        "Learn industry-standard DevOps tools and practices",
+        "Hands-on experience with real-world projects",
+        "Structured learning path for beginners",
+        "Career guidance and mentorship"
+      ]
     },
     {
       title: "Non-IT Background",
-      description: "Coming from a different field? No problem! We'll guide you through the basics to advanced concepts"
+      description: "Carefully designed transition path for career switchers",
+      practices: [
+        "Basic to advanced programming concepts",
+        "Linux fundamentals and system administration",
+        "Cloud computing foundations",
+        "Practical automation skills"
+      ]
     },
     {
       title: "Working Professionals",
-      description: "Flexible learning schedule designed for busy professionals looking to transition into DevOps"
+      description: "Flexible learning schedule for busy professionals",
+      practices: [
+        "Weekend batch options available",
+        "Recorded sessions for self-paced learning",
+        "Project-based practical assignments",
+        "Industry-aligned curriculum"
+      ]
     },
     {
       title: "Tech Enthusiasts",
-      description: "Perfect for those passionate about technology and eager to learn cloud and automation"
+      description: "Deep dive into modern DevOps technologies",
+      practices: [
+        "Hands-on cloud platform experience",
+        "Container orchestration with Kubernetes",
+        "CI/CD pipeline implementation",
+        "Infrastructure as Code practice"
+      ]
     }
   ];
 
@@ -78,18 +104,45 @@ const JrDevOpsCard: React.FC = () => {
     <div className="bg-white rounded-2xl shadow-lg p-6">
       <h2 className="text-3xl font-bold mb-2">Jr DevOps Engineer</h2>
       <div className="flex items-baseline mb-6">
-        <span className="text-4xl font-bold">$299</span>
+        <span className="text-4xl font-bold">₹17999</span>
         <span className="text-gray-500 ml-2">/3 months</span>
       </div>
-      <div className="mb-6">
-        {features.map((feature, index) => (
-          <FeatureItem 
-            key={index}
-            feature={feature.title}
-            description={feature.description}
-          />
+      
+      <div className="mb-6 space-y-4">
+        {paths.map((path, index) => (
+          <div key={index} className="border rounded-lg p-4">
+            <button
+              onClick={() => setExpandedPath(expandedPath === index ? null : index)}
+              className="w-full text-left"
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-3">
+                  <h3 className="font-semibold text-gray-900">{path.title}</h3>
+                </div>
+                <ChevronDown
+                  className={`w-5 h-5 text-gray-500 transform transition-transform ${
+                    expandedPath === index ? 'rotate-180' : ''
+                  }`}
+                />
+              </div>
+            </button>
+            {expandedPath === index && (
+              <div className="mt-4 space-y-4">
+                <p className="text-gray-600">{path.description}</p>
+                <ul className="space-y-2">
+                  {path.practices.map((practice, pIndex) => (
+                    <li key={pIndex} className="flex items-center text-sm text-gray-600">
+                      <span className="mr-2 text-green-500">✓</span>
+                      {practice}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
         ))}
       </div>
+
       <div className="space-y-4">
         <button 
           onClick={handleViewSyllabus}
@@ -97,7 +150,6 @@ const JrDevOpsCard: React.FC = () => {
         >
           View Full syllabus
         </button>
-        
         <button 
           onClick={handleEnroll}
           className="w-full py-3 px-4 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
