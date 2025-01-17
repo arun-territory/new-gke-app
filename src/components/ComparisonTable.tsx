@@ -1,11 +1,6 @@
-import { motion } from 'framer-motion';
+import React from 'react';
 
-interface ComparisonItem {
-  other: string;
-  ours: string;
-}
-
-const comparisons: ComparisonItem[] = [
+const comparisons = [
   {
     other: "They usually have you build small sample apps (like a \"To Do\" app)",
     ours: "We have you build a full, end-to-end e-commerce project with a real frontend, backend, and database"
@@ -42,37 +37,43 @@ const comparisons: ComparisonItem[] = [
 
 export function ComparisonTable() {
   return (
-    <div className="py-16 bg-gradient-to-b from-gray-900 to-gray-800 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-4xl font-bold mb-4">Why We're Different</h2>
-          <p className="text-xl text-gray-300">
+    <div className="bg-slate-50 py-16">
+      <div className="max-w-7xl mx-auto px-4">
+        {/* Header Section */}
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">Why We're Different</h2>
+          <p className="text-xl text-gray-600">
             A simplified comparison that shows how we stand out from other programs
           </p>
-        </motion.div>
-        
-        <div className="space-y-6">
-          {comparisons.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className="grid md:grid-cols-2 gap-4 bg-gray-800/50 rounded-lg overflow-hidden"
+        </div>
+
+        {/* Comparison Items */}
+        <div className="space-y-4">
+          {comparisons.map((comparison, index) => (
+            <div 
+              key={index} 
+              className="flex flex-col sm:flex-row rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200"
             >
-              <div className="p-6 border-b md:border-b-0 md:border-r border-gray-700">
-                <h3 className="text-lg text-gray-400 font-medium mb-2">Other Courses/Trainings</h3>
-                <p>{item.other}</p>
+              {/* Left Column */}
+              <div className="flex-1 p-6 bg-white border-r border-gray-100">
+                <h3 className="text-gray-600 text-lg font-medium mb-2">
+                  Other Courses/Trainings
+                </h3>
+                <p className="text-gray-800">
+                  {comparison.other}
+                </p>
               </div>
-              <div className="p-6 bg-gradient-to-r from-blue-900/20 to-cyan-900/20">
-                <h3 className="text-lg text-blue-400 font-medium mb-2">Our Internship Program</h3>
-                <p className="text-gray-200">{item.ours}</p>
+
+              {/* Right Column */}
+              <div className="flex-1 p-6 bg-blue-50">
+                <h3 className="text-blue-600 text-lg font-medium mb-2">
+                  Our Internship Program
+                </h3>
+                <p className="text-gray-800">
+                  {comparison.ours}
+                </p>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
