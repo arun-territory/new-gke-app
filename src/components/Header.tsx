@@ -49,7 +49,6 @@ export function Header() {
     setIsMenuOpen(false);
   };
 
-  // Animation variants remain the same
   const letterVariants = {
     initial: { y: 0 },
     animate: { y: [-2, 2, -2], transition: { repeat: Infinity, duration: 2 } }
@@ -68,17 +67,17 @@ export function Header() {
     }
   };
 
-  const menuVariants = {
+  const mobileMenuVariants = {
     closed: {
       opacity: 0,
-      x: "100%",
+      y: -20,
       transition: {
         duration: 0.2
       }
     },
     open: {
       opacity: 1,
-      x: "0%",
+      y: 0,
       transition: {
         duration: 0.3
       }
@@ -89,7 +88,7 @@ export function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo section remains the same */}
+          {/* Logo section */}
           <motion.div 
             className="flex items-center space-x-2 group cursor-pointer"
             whileHover={{ scale: 1.05 }}
@@ -126,10 +125,7 @@ export function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-4">
             <div className="flex space-x-2">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button 
                   onClick={handleWhatIsDevOps}
                   className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white"
@@ -138,10 +134,7 @@ export function Header() {
                   What is DevOps?
                 </Button>
               </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button 
                   onClick={handleWhyIsDevOps}
                   className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white"
@@ -151,10 +144,7 @@ export function Header() {
                 </Button>
               </motion.div>
             </div>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button 
                 onClick={handleDaavalAI}
                 className="bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white"
@@ -163,12 +153,7 @@ export function Header() {
                 Daaval AI
               </Button>
             </motion.div>
-            
-            {/* Add Blog Button */}
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button 
                 onClick={handleBlog}
                 className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white"
@@ -177,27 +162,20 @@ export function Header() {
                 Blog
               </Button>
             </motion.div>
-            
-            <Button 
-              variant="outline" 
-              size="sm" 
-              onClick={handleInternship}
-            >
+            <Button variant="outline" size="sm" onClick={handleInternship}>
               Internship
             </Button>
-            <Button 
-              variant="outline" 
-              size="sm"
-            >
+            <Button variant="outline" size="sm">
               Sign In
             </Button>
           </nav>
 
           {/* Mobile Menu Button */}
+          {/* Mobile Menu Button */}
           <Button
-            variant="outline"
-            size="icon"
-            className="md:hidden"
+            variant="outline"  // Changed from "ghost" to "outline"
+            size="default"     // Changed from "icon" to "default"
+            className="md:hidden p-2"  // Added padding for touch target
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -205,64 +183,87 @@ export function Header() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Improved Version */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
             initial="closed"
             animate="open"
             exit="closed"
-            variants={menuVariants}
-            className="fixed inset-y-0 right-0 w-full bg-white md:hidden"
+            variants={mobileMenuVariants}
+            className="absolute top-16 left-0 right-0 bg-white shadow-lg md:hidden overflow-hidden"
           >
-            <div className="pt-20 px-4 space-y-4">
-              <Button 
-                onClick={handleWhatIsDevOps}
-                className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white"
-                size="lg"
-              >
-                What is DevOps?
-              </Button>
-              
-              <Button 
-                onClick={handleWhyIsDevOps}
-                className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white"
-                size="lg"
-              >
-                Why DevOps?
-              </Button>
-              <Button 
-                onClick={handleDaavalAI}
-                className="w-full bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white"
-                size="lg"
-              >
-                Daaval AI
-              </Button>
+            <div className="p-4 space-y-3 max-h-[calc(100vh-4rem)] overflow-y-auto">
+              <div className="grid gap-3">
+                <motion.div 
+                  whileTap={{ scale: 0.98 }}
+                  className="rounded-lg overflow-hidden"
+                >
+                  <Button 
+                    onClick={handleWhatIsDevOps}
+                    className="w-full h-12 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white"
+                  >
+                    What is DevOps?
+                  </Button>
+                </motion.div>
+                
+                <motion.div 
+                  whileTap={{ scale: 0.98 }}
+                  className="rounded-lg overflow-hidden"
+                >
+                  <Button 
+                    onClick={handleWhyIsDevOps}
+                    className="w-full h-12 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white"
+                  >
+                    Why DevOps?
+                  </Button>
+                </motion.div>
 
-              {/* Add Blog Button to mobile menu */}
-              <Button 
-                onClick={handleBlog}
-                className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white"
-                size="lg"
-              >
-                Blog
-              </Button>
-              
-              <Button 
-                variant="outline" 
-                className="w-full" 
-                onClick={handleInternship}
-                size="lg"
-              >
-                Internship
-              </Button>
-              <Button 
-                variant="outline" 
-                className="w-full"
-                size="lg"
-              >
-                Sign In
-              </Button>
+                <motion.div 
+                  whileTap={{ scale: 0.98 }}
+                  className="rounded-lg overflow-hidden"
+                >
+                  <Button 
+                    onClick={handleDaavalAI}
+                    className="w-full h-12 bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white"
+                  >
+                    Daaval AI
+                  </Button>
+                </motion.div>
+
+                <motion.div 
+                  whileTap={{ scale: 0.98 }}
+                  className="rounded-lg overflow-hidden"
+                >
+                  <Button 
+                    onClick={handleBlog}
+                    className="w-full h-12 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white"
+                  >
+                    Blog
+                  </Button>
+                </motion.div>
+              </div>
+
+              <div className="pt-3 border-t border-gray-100">
+                <motion.div 
+                  whileTap={{ scale: 0.98 }}
+                  className="space-y-3"
+                >
+                  <Button 
+                    variant="outline" 
+                    className="w-full h-12"
+                    onClick={handleInternship}
+                  >
+                    Internship
+                  </Button>
+                  <Button 
+                    variant="outline"
+                    className="w-full h-12"
+                  >
+                    Sign In
+                  </Button>
+                </motion.div>
+              </div>
             </div>
           </motion.div>
         )}
