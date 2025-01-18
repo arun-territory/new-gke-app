@@ -1,7 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent } from './Card';
 import { Button } from './Button';
-import { ChevronRight, Terminal, Code, Box, Play, Upload, Globe, Search } from 'lucide-react';
+import { Alert, AlertDescription } from './alert';
+import { 
+  ChevronRight, 
+  Terminal, 
+  Code, 
+  Box, 
+  Play, 
+  Upload, 
+  Globe, 
+  Search,
+  ExternalLink 
+} from 'lucide-react';
 
 const EnhancedCodingDemo = () => {
   const [isDemoStarted, setIsDemoStarted] = useState(false);
@@ -9,6 +20,11 @@ const EnhancedCodingDemo = () => {
   const [isTyping, setIsTyping] = useState(false);
   const [typeIndex, setTypeIndex] = useState(0);
   const [showPreview, setShowPreview] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Your repository URL
+  const repoUrl = 'https://github.com/arun-territory/demo-live-project';
+  const gitpodUrl = `https://gitpod.io/#${repoUrl}`;
 
   const steps = [
     {
@@ -84,10 +100,7 @@ git commit -m "Initial commit: Weather Dashboard App"
 git remote add origin https://github.com/username/weather-dashboard.git
 
 # Push to GitHub
-git push -u origin main
-
-# Repository is now available at:
-https://github.com/username/weather-dashboard`,
+git push -u origin main`,
       icon: <Upload className="w-6 h-6" />
     },
     {
@@ -143,8 +156,7 @@ jobs:
 └─ Deploy to GKE
    └─ Deployment "weather-app" successfully rolled out
 
-Pipeline completed successfully!
-View deployment: https://github.com/username/weather-dashboard/actions`,
+Pipeline completed successfully!`,
       icon: <Terminal className="w-6 h-6" />
     },
     {
@@ -160,26 +172,21 @@ kubectl get pods`,
     }
   ];
 
-  // Highlight code based on type (shell vs code)
   const highlightCode = (code: string): string => {
     const lines = code.split('\n');
-    return lines.map((line: string, index: number) => {
-      // Shell commands
+    return lines.map((line: string) => {
       if (line.startsWith('#')) {
         return `<div class="text-gray-400">${line}</div>`;
       }
       if (line.startsWith('git') || line.startsWith('docker') || line.startsWith('npm') || line.startsWith('kubectl')) {
         return `<div class="text-cyan-400">${line}</div>`;
       }
-      // Code comments
       if (line.startsWith('//')) {
         return `<div class="text-gray-400">${line}</div>`;
       }
-      // GitHub Actions specific
       if (line.includes('name:') || line.includes('on:') || line.includes('env:') || line.includes('jobs:')) {
         return `<div class="text-purple-400">${line}</div>`;
       }
-      // Success indicators in pipeline output
       if (line.includes('✓') || line.includes('successfully')) {
         return `<div class="text-green-400">${line}</div>`;
       }
@@ -187,7 +194,6 @@ kubectl get pods`,
     }).join('');
   };
 
-  // Rest of the component remains the same...
   const currentCode = steps[currentStep].code.slice(0, typeIndex);
 
   useEffect(() => {
@@ -219,10 +225,16 @@ kubectl get pods`,
     }
   };
 
+  const handleStartWorkspace = () => {
+    setIsLoading(true);
+    window.open(gitpodUrl, '_blank');
+    setIsLoading(false);
+  };
+
   return (
     <div className="max-w-4xl mx-auto p-4">
       {!isDemoStarted ? (
-        <Card className="mb-4">
+        <Card>
           <CardContent className="p-6 text-center">
             <h2 className="text-2xl font-bold mb-4">GKE Application Deployment Demo</h2>
             <p className="mb-6 text-gray-600">Learn how to build and deploy a React app to Google Kubernetes Engine</p>
@@ -237,64 +249,122 @@ kubectl get pods`,
           </CardContent>
         </Card>
       ) : (
-        <Card className="mb-4">
-          <CardContent className="p-6">
-            <div className="flex items-center mb-4">
-              {steps[currentStep].icon}
-              <h2 className="text-xl font-bold ml-2">{steps[currentStep].title}</h2>
-            </div>
-            <div className="bg-gray-900 p-4 rounded-lg font-mono">
-              <div dangerouslySetInnerHTML={{ __html: highlightCode(currentCode) }} />
-            </div>
-            
-            {showPreview && (
-              <div className="mt-4">
-                <div className="border rounded-lg shadow-lg">
-                  <div className="bg-gray-100 p-2 rounded-t-lg flex items-center gap-2">
-                    <div className="flex gap-1.5">
-                      <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                      <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                      <div className="w-3 h-3 rounded-full bg-green-500"></div>
+        <>
+          <Card className="mb-8">
+            <CardContent className="p-6">
+              <div className="flex items-center mb-4">
+                {steps[currentStep].icon}
+                <h2 className="text-xl font-bold ml-2">{steps[currentStep].title}</h2>
+              </div>
+              <div className="bg-gray-900 p-4 rounded-lg font-mono">
+                <div dangerouslySetInnerHTML={{ __html: highlightCode(currentCode) }} />
+              </div>
+              
+              {showPreview && (
+                <div className="mt-4">
+                  <div className="border rounded-lg shadow-lg">
+                    <div className="bg-gray-100 p-2 rounded-t-lg flex items-center gap-2">
+                      <div className="flex gap-1.5">
+                        <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                      </div>
+                      <div className="flex-1 bg-white rounded flex items-center px-3 py-1 gap-2">
+                        <Search className="w-4 h-4 text-gray-400" />
+                        <span className="text-gray-600">https://weather-app.example.com</span>
+                      </div>
                     </div>
-                    <div className="flex-1 bg-white rounded flex items-center px-3 py-1 gap-2">
-                      <Search className="w-4 h-4 text-gray-400" />
-                      <span className="text-gray-600">https://weather-app.example.com</span>
-                    </div>
-                  </div>
-                  <div className="bg-gradient-to-br from-blue-100 to-blue-50 p-6">
-                    <div className="max-w-md mx-auto bg-white rounded-lg shadow-lg p-6">
-                      <h1 className="text-2xl font-bold text-center mb-4">Weather Dashboard</h1>
-                      <div className="flex gap-2">
-                        <input 
-                          className="flex-1 p-2 border rounded"
-                          placeholder="Enter city name"
-                        />
-                        <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors">
-                          Search
-                        </button>
+                    <div className="bg-gradient-to-br from-blue-100 to-blue-50 p-6">
+                      <div className="max-w-md mx-auto bg-white rounded-lg shadow-lg p-6">
+                        <h1 className="text-2xl font-bold text-center mb-4">Weather Dashboard</h1>
+                        <div className="flex gap-2">
+                          <input 
+                            className="flex-1 p-2 border rounded"
+                            placeholder="Enter city name"
+                          />
+                          <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors">
+                            Search
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            )}
-
-            <div className="mt-4 flex justify-between items-center">
-              <div className="text-sm text-gray-500">
-                Step {currentStep + 1} of {steps.length}
-              </div>
-              {currentStep < steps.length - 1 && (
-                <Button 
-                  onClick={handleNext}
-                  className="flex items-center"
-                >
-                  Next Step
-                  <ChevronRight className="w-4 h-4 ml-1" />
-                </Button>
               )}
-            </div>
-          </CardContent>
-        </Card>
+
+              <div className="mt-4 flex justify-between items-center">
+                <div className="text-sm text-gray-500">
+                  Step {currentStep + 1} of {steps.length}
+                </div>
+                {currentStep < steps.length - 1 && (
+                  <Button 
+                    onClick={handleNext}
+                    className="flex items-center"
+                  >
+                    Next Step
+                    <ChevronRight className="w-4 h-4 ml-1" />
+                  </Button>
+                )}
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Live Demo Section */}
+          {currentStep === steps.length - 1 && (
+            <Card className="bg-white">
+              <CardContent className="p-6">
+                <div className="text-center space-y-6">
+                  <h2 className="text-2xl font-bold">Try it yourself - Live Coding Environment</h2>
+                  
+                  <Alert>
+                    <AlertDescription className="text-sm">
+                      Click the button below to launch a full development environment where you can code and run the project.
+                    </AlertDescription>
+                  </Alert>
+
+                  <div className="flex flex-col items-center gap-4">
+                    <Button 
+                      onClick={handleStartWorkspace}
+                      size="lg"
+                      className="bg-blue-600 hover:bg-blue-700"
+                      disabled={isLoading}
+                    >
+                      <Code className="w-5 h-5 mr-2" />
+                      Open in GitPod
+                      <ExternalLink className="w-4 h-4 ml-2" />
+                    </Button>
+                    <p className="text-sm text-gray-600">
+                      First time? You'll need to sign in with GitHub (it's free!)
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left mt-8">
+                    <div>
+                      <h3 className="font-semibold mb-2">What you'll get:</h3>
+                      <ul className="space-y-2 text-sm text-gray-600">
+                        <li>• Full VS Code environment</li>
+                        <li>• Live preview of your app</li>
+                        <li>• Real terminal access</li>
+                        <li>• Pre-installed dependencies</li>
+                        <li>• Automatic setup</li>
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h3 className="font-semibold mb-2">Getting Started:</h3>
+                      <ol className="space-y-2 text-sm text-gray-600 list-decimal pl-4">
+                        <li>Click "Open in GitPod"</li>
+                        <li>Sign in with GitHub if prompted</li>
+                        <li>Wait for the environment to load</li>
+                        <li>Start coding!</li>
+                      </ol>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          )}
+        </>
       )}
     </div>
   );

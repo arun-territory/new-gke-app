@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Container, Layers, GitBranch, Terminal, Database, Cloud } from 'lucide-react';
 
+
 // Import components
 import { Button } from './components/Button';
 import { Card } from './components/Card';
@@ -170,7 +171,6 @@ const HomePage = () => {
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 <Card
-                  icon={feature.icon}
                   title={feature.title}
                   description={feature.description}
                   className="h-full"
