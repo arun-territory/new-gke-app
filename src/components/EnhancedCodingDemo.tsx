@@ -232,7 +232,7 @@ kubectl get pods`,
               size="lg"
             >
               <Play className="w-5 h-5 mr-2" />
-              Start Demo
+              Start Project
             </Button>
           </CardContent>
         </Card>

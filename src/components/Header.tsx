@@ -161,7 +161,7 @@ export function Header() {
                     size="default"
                   >
                     <Play className="w-4 h-4 mr-2" />
-                    Live Demo
+                    Live Project
                   </Button>
                 </motion.div>
               </div>
