@@ -249,7 +249,7 @@ export function Header() {
                       className="w-full h-12 bg-gradient-to-r from-violet-500 to-purple-500 hover:from-violet-600 hover:to-purple-600 text-white"
                     >
                       <Play className="w-4 h-4 mr-2" />
-                      Live Demo
+                      Live Project
                     </Button>
                   </motion.div>
 
