@@ -22,6 +22,8 @@ import QuoteSlider from './components/QuoteSlider';
 import BlogViewer from './pages/BlogViewer';
 import ApplicationDialog from './components/ApplicationDialog';
 import DevOpsSyllabus from './components/DevOpsSyllabus';
+import DevOpsGuidePage2 from './pages/DevOpsGuidePage2';
+
 
 // Animation variants remain the same
 const containerVariants = {
@@ -226,6 +228,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/devops-roadmap" element={<DevOpsRoadmap />} />
           <Route path="/what-is-devops" element={<DevOpsGuidePage />} />
+          <Route path="/devops-guide-page-2" element={<DevOpsGuidePage2 />} />
           <Route path="/why-is-devops" element={<ComparisonTable />} />
           <Route path="/internship-file" element={<PricingSection />} />
           <Route path="/blog/*" element={<BlogViewer />} />

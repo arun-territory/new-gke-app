@@ -37,7 +37,7 @@ const comparisons = [
 
 export function ComparisonTable() {
   return (
-    <div className="bg-slate-50 py-16">
+    <div className="bg-white py-16">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header Section */}
         <div className="text-center mb-12">
@@ -52,24 +52,24 @@ export function ComparisonTable() {
           {comparisons.map((comparison, index) => (
             <div 
               key={index} 
-              className="flex flex-col sm:flex-row rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200"
+              className="flex flex-col sm:flex-row border border-gray-200 rounded-lg overflow-hidden"
             >
               {/* Left Column */}
-              <div className="flex-1 p-6 bg-white border-r border-gray-100">
+              <div className="flex-1 p-6 bg-gray-50">
                 <h3 className="text-gray-600 text-lg font-medium mb-2">
                   Other Courses/Trainings
                 </h3>
-                <p className="text-gray-800">
+                <p className="text-gray-700">
                   {comparison.other}
                 </p>
               </div>
 
               {/* Right Column */}
-              <div className="flex-1 p-6 bg-blue-50">
+              <div className="flex-1 p-6 bg-blue-50/50">
                 <h3 className="text-blue-600 text-lg font-medium mb-2">
                   Our Internship Program
                 </h3>
-                <p className="text-gray-800">
+                <p className="text-gray-700">
                   {comparison.ours}
                 </p>
               </div>

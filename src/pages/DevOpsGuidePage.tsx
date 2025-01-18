@@ -1,6 +1,19 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Footer } from '../components/Footer';
 
-const DevOpsGuidePage = () => {
+const DevOpsGuidePage: React.FC = () => {
+  const navigate = useNavigate();
+
+  // Navigation handlers
+  const handleNavigateNext = (): void => {
+    navigate('/devops-guide-page-2');
+  };
+
+  const handleNavigateBack = (): void => {
+    navigate(-1);
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
@@ -51,7 +64,12 @@ const DevOpsGuidePage = () => {
           <p className="text-gray-700 mb-6">
             Now, imagine if that restaurant changed its way of working. The chefs and waiters started 
             communicating constantly. Chefs would know exactly how many orders were coming in, and 
-            waiters would understand how long each dish takes to prepare...
+            waiters would understand how long each dish takes to prepare. This is exactly what happened 
+            in the software world with the birth of DevOps.
+          </p>
+          <p className="text-gray-700 mb-6">
+            DevOps brought together developers (our chefs) and operations teams (our waiters) to work 
+            as one unified team. The result? Faster delivery, fewer mistakes, and happier customers.
           </p>
         </div>
 
@@ -61,7 +79,10 @@ const DevOpsGuidePage = () => {
             Chapter 3: A Day in Modern Software Development
           </h2>
           <p className="text-gray-700 mb-6">
-            Let's revisit Rajesh's story, but now in a company that has embraced DevOps...
+            Let's revisit Rajesh's story, but now in a company that has embraced DevOps. His day starts 
+            with a stand-up meeting where developers and operations teams discuss their goals together. 
+            When he writes code, automated tests immediately check if everything works correctly. When 
+            he's ready to deploy, automated systems take care of pushing his code to production safely.
           </p>
         </div>
 
@@ -74,7 +95,8 @@ const DevOpsGuidePage = () => {
             <p className="text-gray-700">
               Remember the transition from old Nokia phones to smartphones? It wasn't just about 
               adding a touchscreen - it was a complete revolution in how we use phones. DevOps 
-              brought a similar revolution to software development...
+              brought a similar revolution to software development. The magic lies in automation, 
+              collaboration, and continuous improvement.
             </p>
           </div>
         </div>
@@ -86,7 +108,9 @@ const DevOpsGuidePage = () => {
           </h2>
           <p className="text-gray-700 mb-6">
             Let me tell you about a small startup in Pune. They were struggling to release new 
-            features for their e-commerce app...
+            features for their e-commerce app. Every release was a nightmare, taking entire weekends 
+            and often resulting in system crashes. After adopting DevOps practices, they went from 
+            monthly releases full of stress to daily releases with confidence.
           </p>
         </div>
 
@@ -97,7 +121,8 @@ const DevOpsGuidePage = () => {
           </h2>
           <p className="text-gray-700 mb-6">
             This is where you come in. The world needs more DevOps engineers - people who can bridge 
-            the gap between development and operations...
+            the gap between development and operations. You'll be the architect of smooth processes, 
+            the guardian of quality, and the enabler of rapid, reliable software delivery.
           </p>
         </div>
 
@@ -108,7 +133,9 @@ const DevOpsGuidePage = () => {
           </h2>
           <p className="text-gray-700 mb-6">
             Your journey begins with understanding both the kitchen (development) and service 
-            (operations) aspects of software...
+            (operations) aspects of software. You'll learn about version control, continuous 
+            integration, automated testing, and infrastructure as code. Don't worry if these terms 
+            sound complex - we'll break them down into simple, practical concepts.
           </p>
         </div>
 
@@ -124,7 +151,10 @@ const DevOpsGuidePage = () => {
           <div className="bg-gray-50 rounded-lg p-6 my-8">
             <h3 className="text-xl font-semibold text-gray-900 mb-4">Morning Stand-up (10:00 AM)</h3>
             <p className="text-gray-700">
-              Priya joins the daily stand-up meeting with multiple teams...
+              Priya joins the daily stand-up meeting with multiple teams. She shares updates about 
+              the new deployment pipeline she's building and coordinates with developers about their 
+              upcoming releases. Her role is to make sure everything flows smoothly from development 
+              to production.
             </p>
           </div>
         </div>
@@ -134,12 +164,32 @@ const DevOpsGuidePage = () => {
           <h2 className="text-3xl font-bold text-gray-900 mb-6">
             The Road Ahead
           </h2>
-          <p className="text-gray-700">
+          <p className="text-gray-700 mb-6">
             As you start this journey, you're not just learning a new skill - you're becoming part 
-            of a revolution in how software is built and delivered...
+            of a revolution in how software is built and delivered. In the next section, we'll dive 
+            into the practical tools and technologies that make DevOps possible.
           </p>
+
+          {/* Navigation Buttons */}
+          <div className="mt-8 flex justify-between items-center">
+            <button
+              onClick={handleNavigateBack}
+              className="px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors flex items-center"
+            >
+              ← Back
+            </button>
+            <button
+              onClick={handleNavigateNext}
+              className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center"
+            >
+              Continue to Tools Setup →
+            </button>
+          </div>
         </div>
       </div>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };
