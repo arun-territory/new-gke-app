@@ -166,13 +166,13 @@ export function Header() {
                 </motion.div>
               </div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button 
+                {/* <Button 
                   onClick={handleDaavalAI}
                   className="bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white"
                   size="default"
                 >
                   Daaval AI
-                </Button>
+                </Button> */}
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button 
@@ -183,12 +183,17 @@ export function Header() {
                   Blog
                 </Button>
               </motion.div>
-              <Button variant="outline" size="sm" onClick={handleInternship}>
-                Internship
-              </Button>
-              <Button variant="outline" size="sm">
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={handleInternship}
+                className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white border-transparent"
+              >
+                Pricing
+            </Button>
+              {/* <Button variant="outline" size="sm">
                 Sign In
-              </Button>
+              </Button> */}
             </nav>
 
             {/* Mobile Menu Button */}
@@ -257,12 +262,12 @@ export function Header() {
                     whileTap={{ scale: 0.98 }}
                     className="rounded-lg overflow-hidden"
                   >
-                    <Button 
+                    {/* <Button 
                       onClick={handleDaavalAI}
                       className="w-full h-12 bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white"
                     >
                       Daaval AI
-                    </Button>
+                    </Button> */}
                   </motion.div>
 
                   <motion.div 
@@ -285,23 +290,25 @@ export function Header() {
                   >
                     <Button 
                       variant="outline" 
-                      className="w-full h-12"
+                      size="sm" 
                       onClick={handleInternship}
+                      className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white border-transparent"
                     >
-                      Internship
+                      Pricing
                     </Button>
-                    <Button 
+                    {/* <Button 
                       variant="outline"
                       className="w-full h-12"
                     >
                       Sign In
-                    </Button>
+                    </Button> */}
                   </motion.div>
                 </div>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
+
       </header>
 
       {/* Demo Modal */}
