@@ -285,11 +285,10 @@ export function Header() {
                     </Button>
                   </motion.div>
                 </div>
-
                 <div className="pt-3 border-t border-gray-100">
                   <motion.div 
                     whileTap={{ scale: 0.98 }}
-                    className="space-y-3"
+                    className="srounded-lg overflow-hidden"
                   >
                     <Button 
                       variant="outline" 
@@ -299,13 +298,13 @@ export function Header() {
                     >
                       Pricing
                     </Button>
+                  </motion.div>
                     {/* <Button 
                       variant="outline"
                       className="w-full h-12"
                     >
                       Sign In
                     </Button> */}
-                  </motion.div>
                 </div>
               </div>
             </motion.div>
