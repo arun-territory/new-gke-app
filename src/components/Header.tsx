@@ -294,7 +294,7 @@ export function Header() {
                       variant="outline" 
                       size="sm" 
                       onClick={handleInternship}
-                      className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white border-transparent"
+                      className="w-full h-12 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white"
                     >
                       Pricing
                     </Button>
