@@ -291,10 +291,8 @@ export function Header() {
                     className="srounded-lg overflow-hidden"
                   >
                     <Button 
-                      variant="outline" 
-                      size="sm" 
                       onClick={handleInternship}
-                      className="w-full h-12 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white"
+                      className="w-full h-12 bg-gradient-to-r from-violet-500 to-purple-500 hover:from-violet-600 hover:to-purple-600 text-white"
                     >
                       Pricing
                     </Button>
