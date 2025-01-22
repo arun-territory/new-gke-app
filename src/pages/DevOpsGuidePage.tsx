@@ -17,16 +17,42 @@ const DevOpsGuidePage: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
+            
       <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
         <div className="max-w-4xl mx-auto px-4 py-16">
           <h1 className="text-4xl md:text-5xl font-bold text-center mb-6">
-            DevOps in Action: Zomato's Journey Simplified
+            DevOps in Zomato's App for simple understanding
           </h1>
           <p className="text-xl text-center text-gray-100">
             A deep dive into modern DevOps practices through real-world scenarios and success stories
           </p>
         </div>
       </div>
+
+      <div className="bg-white p-6 rounded-lg shadow-lg">
+            <img
+              src="/devopsgif.gif"
+              
+              alt="DevOps Architecture Diagram"
+              className="w-full h-auto max-w-4xl mx-auto"
+            />
+            <p className="text-gray-600 text-center mt-4">
+              Comprehensive overview of our DevOps architecture and workflow
+            </p>
+          </div>
+
+          <div className="bg-white p-6 rounded-lg shadow-lg">
+            <img
+              src="/images/beforeafter.gif"
+              
+              alt="DevOps Architecture"
+              className="w-full h-auto max-w-4xl mx-auto"
+            />
+            <p className="text-gray-600 text-center mt-4">
+              Comprehensive overview of our DevOps architecture
+            </p>
+          </div>
+        
 
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-4 py-12">
@@ -95,13 +121,13 @@ const DevOpsGuidePage: React.FC = () => {
           
           <div className="mb-8">
             <p className="text-gray-700 mb-4">
-              Meet Riya, a Zomato developer with big dreams and a tough job. One day, her manager says:
+              Meet Sushmitha, a Zomato developer with big dreams and a tough job. One day, her manager says:
             </p>
             <blockquote className="italic border-l-4 border-blue-500 pl-4 my-4">
-              "Riya, we need a live order tracking feature so customers can see where their food is at all times!"
+              "Sushmitha, we need a live order tracking feature so customers can see where their food is at all times!"
             </blockquote>
             <p className="text-gray-700 mb-4">
-              Excited, Riya jumps into action. She spends hours coding the feature and finally sends it to the testing team. That's where the nightmare begins.
+              Excited, Sushmitha jumps into action. She spends hours coding the feature and finally sends it to the testing team. That's where the nightmare begins.
             </p>
           </div>
 
@@ -112,14 +138,14 @@ const DevOpsGuidePage: React.FC = () => {
               <div>
                 <h4 className="text-xl font-semibold text-gray-800 mb-2">Syntax Errors:</h4>
                 <p className="text-gray-700">
-                  "Riya, your code doesn't even compile," says the testing lead, frustrated. Riya realizes she missed a semicolon.
+                  "Sushmitha, your code doesn't even compile," says the testing lead, frustrated. Sushmitha realizes she missed a semicolon.
                 </p>
               </div>
 
               <div>
                 <h4 className="text-xl font-semibold text-gray-800 mb-2">Dependency Issues:</h4>
                 <p className="text-gray-700">
-                  When the testing team tries to run the app, they find some libraries are missing. "It works on my laptop!" says Riya.
+                  When the testing team tries to run the app, they find some libraries are missing. "It works on my laptop!" says Sushmitha.
                 </p>
               </div>
 
@@ -133,11 +159,11 @@ const DevOpsGuidePage: React.FC = () => {
               <div>
                 <h4 className="text-xl font-semibold text-gray-800 mb-2">Back-and-Forth Hell:</h4>
                 <p className="text-gray-700">
-                  The testing team sends the app back to Riya for fixes. She makes changes, only to find that new bugs have appeared.
+                  The testing team sends the app back to Sushmitha for fixes. She makes changes, only to find that new bugs have appeared.
                 </p>
                 <ul className="list-disc pl-6 mt-2 text-gray-700">
                   <li>Testers feel like they're chasing a moving target.</li>
-                  <li>Riya feels like she's running in circles.</li>
+                  <li>Sushmitha feels like she's running in circles.</li>
                 </ul>
               </div>
 
@@ -166,7 +192,7 @@ const DevOpsGuidePage: React.FC = () => {
               <div>
                 <h4 className="text-xl font-semibold text-gray-800 mb-2">Developer's Safety Net:</h4>
                 <ul className="list-disc pl-6 text-gray-700">
-                  <li>Riya pushes her code to GitHub.</li>
+                  <li>Sushmitha pushes her code to GitHub.</li>
                   <li>The CI pipeline starts automatically:
                     <ul className="list-disc pl-6 mt-2">
                       <li>Syntax errors? Caught immediately.</li>
@@ -180,7 +206,7 @@ const DevOpsGuidePage: React.FC = () => {
               <div>
                 <h4 className="text-xl font-semibold text-gray-800 mb-2">Automated Testing Saves Time:</h4>
                 <ul className="list-disc pl-6 text-gray-700">
-                  <li>Integration tests check how Riya's feature works with other parts of the app.</li>
+                  <li>Integration tests check how Sushmitha's feature works with other parts of the app.</li>
                   <li>Performance tests simulate heavy traffic.</li>
                   <li>Security scans ensure no vulnerabilities are introduced.</li>
                 </ul>
@@ -189,7 +215,7 @@ const DevOpsGuidePage: React.FC = () => {
               <div>
                 <h4 className="text-xl font-semibold text-gray-800 mb-2">Fast Feedback:</h4>
                 <ul className="list-disc pl-6 text-gray-700">
-                  <li>Within 15 minutes, Riya knows what needs fixing.</li>
+                  <li>Within 15 minutes, Sushmitha knows what needs fixing.</li>
                   <li>She iterates quickly and confidently.</li>
                 </ul>
               </div>
@@ -210,6 +236,18 @@ const DevOpsGuidePage: React.FC = () => {
             </div>
           </div>
         </div>
+
+        <div className="bg-white p-6 rounded-lg shadow-lg">
+            <img
+              src="/images/moderncicd.gif"
+              
+              alt="DevOps Architecture"
+              className="w-full h-auto max-w-4xl mx-auto"
+            />
+            <p className="text-gray-600 text-center mt-4">
+              Comprehensive overview of our DevOps architecture
+            </p>
+          </div>
 
 
         <div className="mb-12">
@@ -302,7 +340,7 @@ const DevOpsGuidePage: React.FC = () => {
         <h3 className="text-2xl font-bold text-gray-800 mt-8 mb-4">Enter Docker: The Modern Metro Train</h3>
         <div>
             <h4 className="text-xl font-semibold text-gray-800 mb-2">Same Track Everywhere:</h4>
-            <p className="text-gray-700"> Developers, testers, and production all use the same container. What works on Riya’s laptop works everywhere.</p>
+            <p className="text-gray-700"> Developers, testers, and production all use the same container. What works on Sushmitha’s laptop works everywhere.</p>
         </div>
 
         <div>
@@ -354,11 +392,24 @@ const DevOpsGuidePage: React.FC = () => {
           </div>
           <div>
             <h4 className="text-xl font-semibold text-gray-800 mb-2">Zero Downtime Updates</h4>
-            <p className="text-gray-700">Riya deploys a new version of the live tracking feature.
+            <p className="text-gray-700">Sushmitha deploys a new version of the live tracking feature.
             Kubernetes rolls it out gradually, monitoring for issues. If something breaks, it rolls back automatically.</p>
           </div>
         </div>
       </div>
+
+      <div className="bg-white p-6 rounded-lg shadow-lg">
+            <img
+              src="/endtoend.gif"
+              
+              alt="DevOps Architecture"
+              className="w-full h-auto max-w-4xl mx-auto"
+            />
+            <p className="text-gray-600 text-center mt-4">
+              Comprehensive overview of our DevOps architecture
+            </p>
+          </div>
+
 
       {/* Chapter 6 */}
       <div className="mb-12">
